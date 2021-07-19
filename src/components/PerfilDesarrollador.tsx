@@ -7,7 +7,7 @@ type PerfilDesarrolladorProps = {
 }
 
 const PerfilDesarrollador = (props: PerfilDesarrolladorProps) =>{
-const [tienePantalla] = React.useState<string>((props.tienePantalla == true  ? "Tiene Pantalla" : "No Tiene Pantalla"));
+const [tienePantalla] = React.useState<string>((props.tienePantalla === true  ? "Tiene Pantalla" : "No Tiene Pantalla"));
     return(
         <div>Nombre Desarrollador: {props.nombre} <br></br>       
         Edad Desarrollador: {props.edad} <br></br>       

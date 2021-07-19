@@ -1,19 +1,17 @@
-import React from 'react';
 import './App.css';
-import PerfilDesarrollador from './components/PerfilDesarrollador';
+import Home from './containers/home/Home';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">      
         <p>
-        <PerfilDesarrollador
-        nombre = "Cristián Escobar Castro"
-        edad = {37}
-        tienePantalla = {true}
-        />
+        <Home />    
         </p>      
       </header>
+      
+  
+
     </div>
   );
 }
