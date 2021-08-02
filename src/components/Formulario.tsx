@@ -1,7 +1,7 @@
 
 function Lista({}) {
 
-    var listaTipoDocumento = [
+    const listaTipoDocumento = [
       { id: "1", codigo: "001", nombre: "Contrato" },
       { id: "2", codigo: "002", nombre: "Papeleta Vacaciones" },
       { id: "3", codigo: "003", nombre: "Seguro" },
