@@ -9,9 +9,6 @@ function App() {
         <Home />    
         </p>      
       </header>
-      
-  
-
     </div>
   );
 }
