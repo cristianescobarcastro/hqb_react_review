@@ -1,12 +1,12 @@
 import './App.css';
-import Home from './containers/home/Home';
+import Login from './components/Login';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">      
         <p>
-        <Home />    
+        <Login />    
         </p>      
       </header>
     </div>
