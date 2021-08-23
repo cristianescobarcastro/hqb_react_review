@@ -27,8 +27,7 @@ function Login() {
     else if (password.length == 0){
         input2.current.focus();
         return;
-    }
-    
+    }    
   }; 
   return (
     <div className="App">
