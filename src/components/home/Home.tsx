@@ -1,7 +1,6 @@
 import React from "react"
 import { useEffect } from "react"
 import { useState } from "react"
-import './Home.scss'
 
 const Home = () => {
     //Variables
@@ -11,7 +10,7 @@ const Home = () => {
     const [textoEnlaceNumeroSecreto, setTextoEnlaceNumeroSecreto] = useState("Mostrar")
     const numeroMinimo = 0
     const numeroMaximo = 10
-    const segundosDelay = 5
+    const segundosDelay = 1
 
     //Referencias
     const divNumeroSecretoRef: any = React.createRef()
@@ -46,11 +45,27 @@ const Home = () => {
     const adivinarNumeroPromise = () =>{
         return new Promise((resolve, reject) => {
             setTimeout(()=>{
-                if(numeroAdivinado == numeroAleatorio){
-                    resolve("Felicitaciones")
-                }else{
-                    reject("No adivino")
+             
+            fetch('https://qa.hqb.cl/NUMERO_RANDOM/api/numero')
+            .then(response => response.json())
+            .then(result => {
+
+                const secretNumber = Number(result.valor);
+
+                if(numeroAdivinado > 10 || numeroAdivinado < 1) {
+                    reject('El número debe ser mayor a 1 y menor a 10');
                 }
+    
+                if(numeroAdivinado !== secretNumber) {
+                    reject(`No estuviste ni cerca!. el número que estoy pensando es: ${secretNumber})`);
+                }
+    
+                resolve('Cuevazo!');
+            })
+            .catch(error => {
+                reject(`Error desde API`);
+            });
+
             }, segundosDelay * 1000)
         })
     }
@@ -86,12 +101,7 @@ const Home = () => {
                             <a href="#" onClick={handlerVerNumeroOnClick} className="text text-links">{textoEnlaceNumeroSecreto} número secreto</a>
                             <input type="button" name="submit" className="input-submit" value="Adivinar" onClick={handlerAdivinarOnClick} ref={botonAdivinar} />
                         </div>
-                        {mostrarNumeroAleatorio &&
-                            <div className="input-control" ref={divNumeroSecretoRef}>
-                                <label className="input-label">Número secreto</label>
-                                <strong><label className="input-label">{numeroAleatorio}</label></strong>
-                            </div>
-                        }
+                     
                     </form>
                 </section>
             </div>
